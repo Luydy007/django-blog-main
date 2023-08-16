@@ -1,14 +1,20 @@
 from django.shortcuts import render
+from blog.models import Post
 
-# Inclui a classe HttpResponse.
+# incluir a class Httresponse.
 from django.http import HttpResponse
 
-#Define uma function view chamada index.
+# Definir uma function view chamada index.
 def index(request):
-    return render(request, 'index.html', {'título': 'Últimos Artigos'}) # Novo returno
+    #return HttpResponse('olá django - index')
+    #return render(request, 'index.html')
+    return render(request, 'index.html', {'titulo': 'Últimos Artigos'})
 
-#Define uma function view chamada ola.
-
-
-def ola(request):
+#def ola(request):
+    # return HttpResponse('ola Django')
     return render(request, 'home.html')
+
+def ola(request): 
+    posts = Post.objects.all() 
+    context = {'posts_list': posts }
+    return render(request, 'posts.html', context)

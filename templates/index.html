@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends '_layout1.html' %} 
 
-<head>
-    <title>Meu Blog</title>
-</head>
-
-<body>
-    <main>
-        <h1>Bem vindo ao Blog</h1>
-    </main>
-</body>
-
-</html>
-{% extends '_layout1.html' %} <!-- herda tudo que já tem em _layout1.html -->
 {% block head_title %}
-Bem vindo ao Blog
+    Bem vindo ao Blog
 {% endblock %}
+
 {% block content %} <!-- substitui o bloco content em _layout1.html -->
-<h1>{{ titulo }}</h1> <!-- variável a ser substituída -->
+    <h1>{{ titulo }}</h1> <!-- variável a ser substituída -->
 {% endblock %} <!-- fecha o bloco content -->

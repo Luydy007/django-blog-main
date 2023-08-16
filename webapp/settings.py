@@ -1,3 +1,4 @@
+import os
 """
 Django settings for webapp project.
 
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--x%nt_2*&(shl=*=407#@9o!zwcn06+pq0%h1y08v^x)9)#3n7'
+SECRET_KEY = 'django-insecure-b3k&ig9(+*s2%85_ze-59-xrrjy_l5)63+tzg7s!0a8v8y0k!y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'webapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'], #Modificado
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,9 +77,23 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
+        'ENGINE': 'django.db.backends.mysql',
+=======
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+>>>>>>> d5a16d44540253aa715dc8d9e4db4d88dc163263
+        'NAME': 'django_blog_db',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+<<<<<<< HEAD
+        'PORT': '3306',
     }
+=======
+        'PORT': '3306', 
+        }
+    
+>>>>>>> d5a16d44540253aa715dc8d9e4db4d88dc163263
 }
 
 
@@ -122,3 +137,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
