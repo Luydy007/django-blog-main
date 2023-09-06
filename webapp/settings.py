@@ -1,4 +1,5 @@
-import os
+import os # Acrescentar no topo do arquivo, na primeira linha
+
 """
 Django settings for webapp project.
 
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b3k&ig9(+*s2%85_ze-59-xrrjy_l5)63+tzg7s!0a8v8y0k!y'
+SECRET_KEY = 'django-insecure-vmsta2e#eu#v2)v^p#(1o+4&a9dz)%7gg6ecbp7rll5=@-b9a2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'django_extensions', # Acrescentar
 ]
 
 MIDDLEWARE = [
@@ -77,25 +79,14 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
         'ENGINE': 'django.db.backends.mysql',
-=======
-        'ENGINE': 'django.db.backends.sqlite3',
->>>>>>> d5a16d44540253aa715dc8d9e4db4d88dc163263
         'NAME': 'django_blog_db',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
-<<<<<<< HEAD
         'PORT': '3306',
     }
-=======
-        'PORT': '3306', 
-        }
-    
->>>>>>> d5a16d44540253aa715dc8d9e4db4d88dc163263
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -138,5 +129,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Inclua no final do arquivo as duas configurações abaixo
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
