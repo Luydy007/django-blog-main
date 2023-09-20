@@ -1,7 +1,7 @@
 import json
 
 from django.shortcuts import render,  get_object_or_404
-from django.views.generic.detail import DetailView
+from django.views.generic import DetailView, ListView, TemplateView
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from django.views.generic.edit import CreateView
@@ -70,6 +70,15 @@ class PostCreateView(CreateView):
     template_name = 'post/post_form.html'
     fields = ('body_text', )
     success_url = reverse_lazy('posts_list')
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'post/post_list.html'
+    context_object_name = 'posts'
+
+class SobreTemplateView(TemplateView):
+    template_name = 'post/sobre.html'
+
 
 @csrf_exempt
 def create_post(request):

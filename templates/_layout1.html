@@ -18,6 +18,8 @@ com o mesmo conteúdo original herdado de _base.html
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% endblock %}
 
+<a class="p-2 text-dark" href="{% url 'posts_all' %}">Postagens</a>
+
 {% block header %}
     <main role="main">
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3
@@ -25,7 +27,7 @@ com o mesmo conteúdo original herdado de _base.html
             <h5 class="my-0 mr-md-auto font-weight-normal">
                 <a href="{% url 'index' %}">Django</a>
             </h5>
-            <a class="p-2 text-dark" href="{% url 'ola' %}">Sobre</a>
+            <a class="p-2 text-dark" href="{% url 'about_page' %}">Sobre</a>
         </div>
     </main>
 {% endblock %}
