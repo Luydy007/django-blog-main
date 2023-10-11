@@ -12,7 +12,8 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 from django.http import HttpResponse
-from blog.models import Post # Acrescentar
+from blog.models import Post 
+from blog.forms import PostModelForm
 
 def index(request):
     # return HttpResponse('Olá Django - index')
@@ -70,6 +71,7 @@ class PostCreateView(CreateView):
     template_name = 'post/post_form.html'
     fields = ('body_text', )
     success_url = reverse_lazy('posts_list')
+    form_class = PostModelForm
 
 class PostListView(ListView):
     model = Post

@@ -15,6 +15,11 @@
             <p>{{ post.body_text }}</p>
             </article>
             {% endfor %}
+
+            {% if post.categoria %}
+                <span>Categoria: {{ post.categoria }}</span>
+            {% endif %}
+
     </div>
 </div>
 {% endblock %} {# fecha o bloco content #}
