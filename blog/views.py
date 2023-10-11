@@ -7,10 +7,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
-
-
-# Create your views here.
-
+from django.contrib import messages
 from django.http import HttpResponse
 from blog.models import Post 
 from blog.forms import PostModelForm
@@ -72,6 +69,9 @@ class PostCreateView(CreateView):
     fields = ('body_text', )
     success_url = reverse_lazy('posts_list')
     form_class = PostModelForm
+    success_message = 'Postagem salva com sucesso.'
+
+
 
 class PostListView(ListView):
     model = Post
@@ -80,7 +80,6 @@ class PostListView(ListView):
 
 class SobreTemplateView(TemplateView):
     template_name = 'post/sobre.html'
-
 
 @csrf_exempt
 def create_post(request):
@@ -109,3 +108,7 @@ def create_post(request):
         
         response['Access-Control-Allow-Origin'] = '*'
         return response
+
+def form_valid(self, request, *args, **kwargs):
+    messages.success(self.request, self.success_message)
+    return super(PostCreateView, self).form_valid(request, *args, **kwargs)

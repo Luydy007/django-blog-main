@@ -34,9 +34,10 @@ com o mesmo conteúdo original herdado de _base.html
 
 {% block main %}
     <div class="container">
-        {% block content %}
-        <p>Conteúdo padrão...</p>
-        {% endblock content %}
+     {% include 'messages.html' %}
+     {% block content %}
+            <p>Conteúdo padrão...</p>
+     {% endblock content %}
     </div>
 {% endblock %}
 
