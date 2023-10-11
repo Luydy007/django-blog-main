@@ -47,3 +47,10 @@ bg-white border-bottom shadow-sm">
 <!-- JS do Projeto -->
 <script src="{% static 'js/base.js' %}"></script>
 {% endblock %}
+
+{% if user.is_authenticated %} {# objeto user sempre está disponível nos templates #}
+    <a class="p-2 text-dark" href="{% url 'logout' %}">Sair</a>
+{% else %}
+    <a class="p-2 text-dark" href="{% url 'signup' %}">Cadastrar</a>
+    <a class="p-2 text-dark" href="{% url 'login' %}">Acessar</a>
+{% endif %}

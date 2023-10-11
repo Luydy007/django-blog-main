@@ -4,11 +4,23 @@ from blog.models import Post
 
 
 class PostModelForm(forms.ModelForm):
-    error_css_class = 'alert-danger'
+    error_css_class = "alert-danger"
+
     def __init__(self, *args, **kwargs):
         super(PostModelForm, self).__init__(*args, **kwargs)
 
         self.fields["pub_date"].initial = datetime.today()
+
+
+    def clean(self):
+        cleaned_data = super().clean()  # recupera todos os dados enviado pelo form
+        pub_date = cleaned_data.get("pub_date")  # recupera um campo específico
+        pub_date = pub_date.replace(tzinfo=None)
+
+        if pub_date > datetime.today():  # exemplo para demonstrar a validação
+            self.add_error(
+            "pub_date", forms.ValidationError("Não é permitido datas futuras")
+        )
 
 
 class Meta:
@@ -21,14 +33,3 @@ class Meta:
 
 
 labels = {"body_text": "", "categoria": "Assunto"}
-
-
-def clean(self):
-    cleaned_data = super().clean()  # recupera todos os dados enviado pelo form
-    pub_date = cleaned_data.get("pub_date")  # recupera um campo específico
-    pub_date = pub_date.replace(tzinfo=None)
-
-    if pub_date > datetime.today():  # exemplo para demonstrar a validação
-        self.add_error(
-            "pub_date", forms.ValidationError("Não é permitido datas futuras")
-        )
