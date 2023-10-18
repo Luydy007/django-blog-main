@@ -17,7 +17,8 @@ com o mesmo conteúdo original herdado de _base.html
     <!-- CSS do Projeto-->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% endblock %}
-
+<a class="p-2 text-dark" href="{% url 'account_edit' pk=user.pk %}">Minha conta</a>
+<a class="p-2 text-dark" href="{% url 'logout' %}">Sair</a>
 <a class="p-2 text-dark" href="{% url 'posts_all' %}">Postagens</a>
 
 {% block header %}
