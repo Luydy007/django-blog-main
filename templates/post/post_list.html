@@ -9,21 +9,19 @@
          <a href="{% url 'post_add' %}" class="btn btn-primary mb-3">
             + Novo post
          </a>
-         <a href="{% url 'post_edit' pk=post.id %}" class="link-secondary">
+        {% for post in posts %}
+        <article>
+            <h2>Em: {{ post.pub_date|date:"d / m / Y" }}</h2>
+            {% if post.categoria %}
+            <span>Categoria: {{ post.categoria }}</span>
+            {% endif %}
+                {% if post.autor %}
+                    <span>Autor: {{ post.autor.username}}</span>
+            {% endif % <br>}
+
+            <p>{{ post.body_text }}<a href="{% url 'post_edit' pk=post.id %}" class="link-secondary">
             Editar
             </a>
-            
-            {% for post in posts %}
-            <article>
-            <h2>Em: {{ post.pub_date|date:"d / m / Y" }}</h2>
-            <p>{{ post.body_text }}</p>
-            </article>
-            {% endfor %}
-
-            {% if post.categoria %}
-                <span>Categoria: {{ post.categoria }}</span>
-            {% endif %}
-
     </div>
 </div>
 {% endblock %} {# fecha o bloco content #}
