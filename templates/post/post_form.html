@@ -8,6 +8,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }} 
+        {{ form_title }}
         <button type="submit" class="btn btn-success">Salvar</button>
     </form>
 </div>

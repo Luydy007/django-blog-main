@@ -10,6 +10,7 @@ from blog.views import (
     create_post,
     PostListView,
     SobreTemplateView,
+    PostUpdateView,
 )
 
 urlpatterns = [
@@ -25,4 +26,5 @@ urlpatterns = [
     path("api/post/add", create_post, name="create_post_data"),
     path("posts", PostListView.as_view(), name="posts_all"),
     path("about-us", SobreTemplateView.as_view(), name="about_page"),
+    path('post/<int:pk>/edit', PostUpdateView.as_view(), name="post_edit"),
 ]

@@ -9,6 +9,10 @@
          <a href="{% url 'post_add' %}" class="btn btn-primary mb-3">
             + Novo post
          </a>
+         <a href="{% url 'post_edit' pk=post.id %}" class="link-secondary">
+            Editar
+            </a>
+            
             {% for post in posts %}
             <article>
             <h2>Em: {{ post.pub_date|date:"d / m / Y" }}</h2>
